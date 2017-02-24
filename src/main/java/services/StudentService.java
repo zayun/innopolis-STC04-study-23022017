@@ -9,6 +9,7 @@ import java.util.List;
  * Created by smoldyrev on 23.02.17.
  */
 public class StudentService {
+
     public static List<Student> getAllStudents(){
         return StudentDao.getAllStudents();
     }
@@ -26,6 +27,10 @@ public class StudentService {
     public static int insertStudent(Student student){
 
         return StudentDao.insertStudent(student);
+    }
+
+    public static List<Student> getStudentsByGroupId(int groupid){
+        return StudentDao.getStudentsByGroup(groupid);
     }
 
 }

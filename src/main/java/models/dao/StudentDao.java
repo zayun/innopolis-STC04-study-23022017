@@ -19,17 +19,19 @@ public class StudentDao {
 
     private static String SQL_ALL_STUDENTS = "SELECT * FROM \"Main\".\"Student\"";
 
+    private static String SQL_STUDENTS_GROUP = "SELECT * FROM \"Main\".\"Student\" WHERE id_group = ?";
+
     private static String SQL_FIND_STUDENT = "SELECT * FROM \"Main\".\"Student\" WHERE id =?";
 
     private static String SQL_DELETE_STUDENT = "DELETE FROM \"Main\".\"Student\" WHERE id = ?";
 
     private static String SQL_UPDATE_STUDENT = "UPDATE \"Main\".\"Student\"\n" +
-            "\tSET id=?, name=?, birthdate=?, sex=?, id_group=?\n" +
+            "\tSET id=?, name=?, birthdate=?, sex=?, id_group=?, email = ?" +
             "\tWHERE id=?";
 
     private static String SQL_INSERT_STUDENT = "INSERT INTO \"Main\".\"Student\"(\n" +
-            "\t name, birthdate, sex, id_group)\n" +
-            "\tVALUES (?, ?, ?, ?);";
+            "\t name, birthdate, sex, id_group, email)\n" +
+            "\tVALUES (?, ?, ?, ?,?);";
 
     public static List<Student> getAllStudents(){
         List<Student> studentsList = new ArrayList<>();
@@ -45,7 +47,8 @@ public class StudentDao {
                         resultSet.getString("name"),
                         resultSet.getDate("birthdate"),
                         resultSet.getString("sex"),
-                        resultSet.getInt("id_group")
+                        resultSet.getInt("id_group"),
+                        resultSet.getString("email")
                 );
                 studentsList.add(student);
             }
@@ -80,6 +83,7 @@ public class StudentDao {
             preparedStatement.setString(4, student.getSex());
             preparedStatement.setInt(5, student.getIdGroup());
             preparedStatement.setInt(6, student.getId());
+            preparedStatement.setString(7, student.getEmail());
 
             count = preparedStatement.executeUpdate();
             logger.debug(student.getId()+" student was update"+student.getIdGroup());
@@ -98,6 +102,7 @@ public class StudentDao {
             preparedStatement.setDate(2, new Date(student.getBirthdate().getTime()));
             preparedStatement.setString(3, student.getSex());
             preparedStatement.setInt(4, student.getIdGroup());
+            preparedStatement.setString(5, student.getEmail());
 
             count = preparedStatement.executeUpdate();
             logger.debug(student.getId()+" student was insert"+student.getIdGroup());
@@ -122,7 +127,8 @@ public class StudentDao {
                         resultSet.getString("name"),
                         resultSet.getDate("birthdate"),
                         resultSet.getString("sex"),
-                        resultSet.getInt("id_group"));
+                        resultSet.getInt("id_group"),
+                        resultSet.getString("email"));
             }else{
                 logger.debug(id+" not found");
             }
@@ -133,4 +139,30 @@ public class StudentDao {
         return student;
     }
 
+    public static List<Student> getStudentsByGroup(int groupid){
+        List<Student> studentsList = new ArrayList<>();
+        try(Connection connection = AcademConnector.getConnection()){
+            PreparedStatement preparedStatement= connection.prepareStatement(SQL_STUDENTS_GROUP);
+            preparedStatement.setInt(1,groupid);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+
+            while(resultSet.next()) {
+                logger.debug(resultSet.getString("name"));
+
+                Student student = new Student(
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getDate("birthdate"),
+                        resultSet.getString("sex"),
+                        resultSet.getInt("id_group"),
+                        resultSet.getString("email")
+                );
+                studentsList.add(student);
+            }
+        } catch (SQLException e) {
+            logger.error(e);
+        }
+        return studentsList;
+    }
 }

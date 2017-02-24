@@ -21,6 +21,8 @@ public class UserDAO {
             "WHERE login = ? AND password = ?";
 
     private static final String SQL_CREATE_USER = "INSERT INTO \"Main\".\"User\"(login, password, role, email) VALUES (?,?,?,?)";
+    private static final String SQL_USER_ID = "SELECT * FROM \"Main\".\"User\"\n" +
+            "WHERE id = ?";
 
     public static User getUserByLoginAndPassword(String login, String password) throws UserDAOException {
 
@@ -70,4 +72,29 @@ public class UserDAO {
         return false;
     }
 
+    public static User getUserById(int id) throws UserDAOException {
+
+        User user = null;
+        try(Connection connection = AcademConnector.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL_USER_ID)) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                logger.debug("find");
+                user = new User(
+                        resultSet.getInt("id"),
+                        resultSet.getString("login"),
+                        resultSet.getString("password"),
+                        resultSet.getString("role"),
+                        resultSet.getString("email")
+                );
+            }else{
+                logger.debug(id + " not found");
+            }
+        } catch (SQLException e) {
+            logger.error(e);
+            throw new UserDAOException();
+        }
+        return user;
+    }
 }

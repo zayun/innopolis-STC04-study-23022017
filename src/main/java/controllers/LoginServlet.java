@@ -2,6 +2,7 @@ package controllers;
 
 import common.exceptions.UserDAOException;
 import models.connector.AcademConnector;
+import models.pojo.User;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.log4j.xml.DOMConfigurator;
@@ -36,7 +37,9 @@ public class LoginServlet extends HttpServlet {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         try {
-            if (UserService.authorise(login,password)) {
+            User user =UserService.authorise(login,password);
+            if (user.getId()!=0) {
+                req.getSession().setAttribute("id",user.getId());
                 logger.trace("auth");
                 resp.sendRedirect("/students/list");
             } else {
