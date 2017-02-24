@@ -8,6 +8,8 @@
 </head>
 <body>
 <h1>List</h1>
+<a href="/students/lections">Лекции</a>/
+<a href="/students/addstudent">Добавить студентика</a>
 <table border="1" width="100%" cellpadding="5">
     <tr>
         <th>ID</th>
@@ -17,12 +19,12 @@
         <th>GroupID</th>
         <th>Actions</th>
     </tr>
-    <a href="/students/addstudent">Добавить студентика</a>
+
 <c:forEach items="${studentList}" var="student">
 
     <tr>
     <td><c:out value="${student.id}"></c:out></td>
-    <td><c:out value="${student.name}"></c:out></td>
+    <td><c:out value="${student.email}"></c:out></td><td><c:out value="${student.idGroup}"></c:out></td>
     <td><c:out value="${student.sex}"></c:out></td>
     <td><c:out value="${student.birthdate}"></c:out></td>
     <td><c:out value="${student.idGroup}"></c:out></td>

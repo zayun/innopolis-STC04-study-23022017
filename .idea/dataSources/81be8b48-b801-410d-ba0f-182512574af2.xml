@@ -30,8 +30,8 @@
     </schema>
     <schema id="9" parent="2" name="Main">
       <ObjectId>16403</ObjectId>
-      <IntrospectionTimestamp>2017-02-23.15:23:05.794</IntrospectionTimestamp>
-      <IntrospectionStateNumber>3504</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-02-24.10:46:54.468</IntrospectionTimestamp>
+      <IntrospectionStateNumber>3615</IntrospectionStateNumber>
       <Visible>1</Visible>
     </schema>
     <sequence id="10" parent="9" name="Groups_id_seq">
@@ -61,15 +61,15 @@
     </sequence>
     <table id="15" parent="9" name="Groups">
       <ObjectId>16462</ObjectId>
-      <StateNumber>618</StateNumber>
+      <StateNumber>3608</StateNumber>
     </table>
     <table id="16" parent="9" name="Lection">
       <ObjectId>16443</ObjectId>
-      <StateNumber>617</StateNumber>
+      <StateNumber>3614</StateNumber>
     </table>
     <table id="17" parent="9" name="Student">
       <ObjectId>16435</ObjectId>
-      <StateNumber>3500</StateNumber>
+      <StateNumber>3604</StateNumber>
     </table>
     <table id="18" parent="9" name="User">
       <ObjectId>16678</ObjectId>
@@ -129,135 +129,169 @@
       <DataType>char(50)|0</DataType>
       <StateNumber>617</StateNumber>
     </column>
-    <index id="29" parent="16" name="Lection_pkey">
+    <column id="29" parent="16" name="groupid">
+      <Position>6</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>3607</StateNumber>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <column id="30" parent="16" name="date">
+      <Position>7</Position>
+      <DataType>timestamp|0</DataType>
+      <StateNumber>3613</StateNumber>
+      <DefaultExpression>now()</DefaultExpression>
+    </column>
+    <index id="31" parent="16" name="Lection_pkey">
       <ObjectId>16450</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="30" parent="16" name="Lection_pkey">
+    <key id="32" parent="16" name="Lection_pkey">
       <ObjectId>16451</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>Lection_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="31" parent="17" name="id">
+    <foreign-key id="33" parent="16" name="lection_groups_id_fk">
+      <ObjectId>16701</ObjectId>
+      <ColNames>groupid</ColNames>
+      <RefTableName>Groups</RefTableName>
+      <RefKeyName>Groups_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="34" parent="17" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>617</StateNumber>
       <DefaultExpression>nextval(&apos;&quot;Main&quot;.&quot;Student_id_seq&quot;&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="32" parent="17" name="name">
+    <column id="35" parent="17" name="name">
       <Position>2</Position>
       <DataType>char(50)|0</DataType>
       <StateNumber>617</StateNumber>
     </column>
-    <column id="33" parent="17" name="birthdate">
+    <column id="36" parent="17" name="birthdate">
       <Position>3</Position>
       <DataType>date|0</DataType>
       <StateNumber>617</StateNumber>
     </column>
-    <column id="34" parent="17" name="sex">
+    <column id="37" parent="17" name="sex">
       <Position>4</Position>
       <DataType>char|0</DataType>
       <StateNumber>3504</StateNumber>
       <DefaultExpression>&apos;M&apos;::bpchar</DefaultExpression>
     </column>
-    <column id="35" parent="17" name="id_group">
+    <column id="38" parent="17" name="id_group">
       <Position>5</Position>
       <DataType>bigint|0</DataType>
       <StateNumber>617</StateNumber>
     </column>
-    <index id="36" parent="17" name="Student_pkey">
+    <column id="39" parent="17" name="column_7">
+      <Position>6</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>3603</StateNumber>
+    </column>
+    <column id="40" parent="17" name="email">
+      <Position>7</Position>
+      <DataType>varchar(20)|0</DataType>
+      <StateNumber>3604</StateNumber>
+    </column>
+    <index id="41" parent="17" name="Student_pkey">
       <ObjectId>16439</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="37" parent="17" name="Student_pkey">
+    <index id="42" parent="17" name="Student_email_uindex">
+      <ObjectId>16692</ObjectId>
+      <ColNames>email</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="43" parent="17" name="Student_pkey">
       <ObjectId>16440</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>Student_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="38" parent="18" name="id">
+    <column id="44" parent="18" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>3481</StateNumber>
       <DefaultExpression>nextval(&apos;&quot;User_id_seq&quot;&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="39" parent="18" name="login">
+    <column id="45" parent="18" name="login">
       <Position>2</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>3481</StateNumber>
     </column>
-    <column id="40" parent="18" name="password">
+    <column id="46" parent="18" name="password">
       <Position>3</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>3481</StateNumber>
     </column>
-    <column id="41" parent="18" name="role">
+    <column id="47" parent="18" name="role">
       <Position>4</Position>
       <DataType>varchar(10)|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>3481</StateNumber>
     </column>
-    <column id="42" parent="18" name="email">
+    <column id="48" parent="18" name="email">
       <Position>5</Position>
       <DataType>varchar(20)|0</DataType>
       <StateNumber>3481</StateNumber>
     </column>
-    <index id="43" parent="18" name="User_id_uindex">
+    <index id="49" parent="18" name="User_id_uindex">
       <ObjectId>16684</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="44" parent="18" name="User_pkey">
+    <index id="50" parent="18" name="User_pkey">
       <ObjectId>16682</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="45" parent="18" name="User_login_uindex">
+    <index id="51" parent="18" name="User_login_uindex">
       <ObjectId>16685</ObjectId>
       <ColNames>login</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="46" parent="18" name="User_pkey">
+    <key id="52" parent="18" name="User_pkey">
       <ObjectId>16683</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>User_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="47" parent="19" name="id">
+    <column id="53" parent="19" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>617</StateNumber>
       <DefaultExpression>nextval(&apos;&quot;Main&quot;.journal_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="48" parent="19" name="id_student">
+    <column id="54" parent="19" name="id_student">
       <Position>2</Position>
       <DataType>bigint|0</DataType>
       <StateNumber>617</StateNumber>
     </column>
-    <column id="49" parent="19" name="id_lesson">
+    <column id="55" parent="19" name="id_lesson">
       <Position>3</Position>
       <DataType>bigint|0</DataType>
       <StateNumber>617</StateNumber>
     </column>
-    <column id="50" parent="19" name="date">
+    <column id="56" parent="19" name="date">
       <Position>4</Position>
       <DataType>date|0</DataType>
       <StateNumber>617</StateNumber>
     </column>
-    <index id="51" parent="19" name="journal_pkey">
+    <index id="57" parent="19" name="journal_pkey">
       <ObjectId>16458</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="52" parent="19" name="journal_pkey">
+    <key id="58" parent="19" name="journal_pkey">
       <ObjectId>16459</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>journal_pkey</UnderlyingIndexName>

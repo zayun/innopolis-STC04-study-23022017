@@ -33,6 +33,33 @@
         <servlet-class>controllers.AddStudentServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>Lections</servlet-name>
+        <servlet-class>controllers.LectionsServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>AddLection</servlet-name>
+        <servlet-class>controllers.AddLectionServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteLection</servlet-name>
+        <servlet-class>controllers.DeleteLectionServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteLection</servlet-name>
+        <url-pattern>/deletelection</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddLection</servlet-name>
+        <url-pattern>/addlection</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Lections</servlet-name>
+        <url-pattern>/lections</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/</url-pattern>
@@ -57,4 +84,13 @@
         <servlet-name>AddStudent</servlet-name>
         <url-pattern>/addstudent</url-pattern>
     </servlet-mapping>
+    <listener>
+        <listener-class>controllers.listeners.ApplicationLoadListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>controllers.listeners.SessionListener</listener-class>
+    </listener>
+    <welcome-file-list>
+        <welcome-file>/login.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>
