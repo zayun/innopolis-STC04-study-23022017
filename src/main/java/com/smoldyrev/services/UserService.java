@@ -21,7 +21,7 @@ public class UserService {
 
     private static Logger logger = Logger.getLogger(UserService.class);
 
-    private UserDAO userDAO;// = new UserDAO();
+    private UserDAO userDAO;
 
     private int anInt = 0;
 
@@ -34,9 +34,7 @@ public class UserService {
         return userDAO.getUserByLoginAndPassword(login, password);
     }
 
-
-
-    public static boolean registration(String login, String password, String email) throws UserDAOException {
+    public boolean registration(String login, String password, String email) throws UserDAOException {
         return UserDAO.registrationUser(login, password,email);
     }
 

@@ -4,7 +4,6 @@ import com.smoldyrev.common.exceptions.UserDAOException;
 import com.smoldyrev.models.connector.AcademConnector;
 import com.smoldyrev.models.pojo.User;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
@@ -29,7 +28,6 @@ public class UserDAO {
     private static final String SQL_USER_ID = "SELECT * FROM \"Main\".\"User\"\n" +
             "WHERE id = ?";
 
-    @Autowired
     public User getUserByLoginAndPassword(String login, String password) throws UserDAOException {
 
         logger.debug(login + " " + password);
