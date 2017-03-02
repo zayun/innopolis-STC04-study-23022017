@@ -5,47 +5,47 @@
          version="3.1">
     <servlet>
         <servlet-name>Login</servlet-name>
-        <servlet-class>controllers.LoginServlet</servlet-class>
+        <servlet-class>com.smoldyrev.controllers.LoginServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet>
         <servlet-name>Registration</servlet-name>
-        <servlet-class>controllers.RegistrationServlet</servlet-class>
+        <servlet-class>com.smoldyrev.controllers.RegistrationServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet>
         <servlet-name>List</servlet-name>
-        <servlet-class>controllers.ListServlet</servlet-class>
+        <servlet-class>com.smoldyrev.controllers.ListServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet>
         <servlet-name>Delete</servlet-name>
-        <servlet-class>controllers.DeleteServlet</servlet-class>
+        <servlet-class>com.smoldyrev.controllers.DeleteServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet>
         <servlet-name>Edit</servlet-name>
-        <servlet-class>controllers.EditServlet</servlet-class>
+        <servlet-class>com.smoldyrev.controllers.EditServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet>
         <servlet-name>AddStudent</servlet-name>
-        <servlet-class>controllers.AddStudentServlet</servlet-class>
+        <servlet-class>com.smoldyrev.controllers.AddStudentServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet>
         <servlet-name>Lections</servlet-name>
-        <servlet-class>controllers.LectionsServlet</servlet-class>
+        <servlet-class>com.smoldyrev.controllers.LectionsServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet>
         <servlet-name>AddLection</servlet-name>
-        <servlet-class>controllers.AddLectionServlet</servlet-class>
+        <servlet-class>com.smoldyrev.controllers.AddLectionServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet>
         <servlet-name>DeleteLection</servlet-name>
-        <servlet-class>controllers.DeleteLectionServlet</servlet-class>
+        <servlet-class>com.smoldyrev.controllers.DeleteLectionServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
@@ -85,11 +85,23 @@
         <url-pattern>/addstudent</url-pattern>
     </servlet-mapping>
     <listener>
-        <listener-class>controllers.listeners.ApplicationLoadListener</listener-class>
+        <listener-class>com.smoldyrev.controllers.listeners.ApplicationLoadListener</listener-class>
     </listener>
     <listener>
-        <listener-class>controllers.listeners.SessionListener</listener-class>
+        <listener-class>com.smoldyrev.controllers.listeners.SessionListener</listener-class>
     </listener>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            beans.xml
+        </param-value>
+    </context-param>
+
     <welcome-file-list>
         <welcome-file>/login.jsp</welcome-file>
     </welcome-file-list>

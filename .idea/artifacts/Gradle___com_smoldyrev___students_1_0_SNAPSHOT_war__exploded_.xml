@@ -21,8 +21,19 @@
           <element id="library" level="project" name="Gradle: javax.servlet:javax.servlet-api:3.0.1" />
           <element id="library" level="project" name="Gradle: jstl:jstl:1.2" />
           <element id="library" level="project" name="Gradle: postgresql:postgresql:9.0-801.jdbc4" />
-          <element id="file-copy" path="$USER_HOME$/pf/gradle-3.3/caches/modules-2/files-2.1/javax.mail/mail/1.4/1aa1579ae5ecd41920c4f355b0a9ef40b68315dd/mail-1.4.jar" />
-          <element id="file-copy" path="$USER_HOME$/pf/gradle-3.3/caches/modules-2/files-2.1/javax.activation/activation/1.1/e6cb541461c2834bdea3eb920f1884d1eb508b50/activation-1.1.jar" />
+          <element id="library" level="project" name="Gradle: javax.mail:mail:1.4" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-context:4.3.5.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-web:4.3.5.RELEASE" />
+          <element id="library" level="project" name="Gradle: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-aop:4.3.5.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-beans:4.3.5.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-core:4.3.5.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-expression:4.3.5.RELEASE" />
+          <element id="library" level="project" name="Gradle: commons-logging:commons-logging:1.2" />
+          <element id="file-copy" path="$USER_HOME$/pf/gradle-3.3/caches/modules-2/files-2.1/org.springframework.security/spring-security-web/4.2.0.RELEASE/bd8415c9e15b8c66adce85c20e585e2a700535e9/spring-security-web-4.2.0.RELEASE.jar" />
+          <element id="file-copy" path="$USER_HOME$/pf/gradle-3.3/caches/modules-2/files-2.1/org.springframework.security/spring-security-core/4.2.0.RELEASE/a6487a92dae110c19033a0b284bdd462d8719ced/spring-security-core-4.2.0.RELEASE.jar" />
+          <element id="file-copy" path="$USER_HOME$/pf/gradle-3.3/caches/modules-2/files-2.1/org.springframework.security/spring-security-config/4.2.0.RELEASE/e34283c282e1afc7ad2efb88c830bf8c0b74aa35/spring-security-config-4.2.0.RELEASE.jar" />
+          <element id="file-copy" path="$USER_HOME$/pf/gradle-3.3/caches/modules-2/files-2.1/aopalliance/aopalliance/1.0/235ba8b489512805ac13a8f9ea77a1ca5ebe3e8/aopalliance-1.0.jar" />
         </element>
       </element>
     </root>

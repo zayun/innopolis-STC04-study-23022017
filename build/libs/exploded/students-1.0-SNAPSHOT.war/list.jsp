@@ -24,7 +24,8 @@
 
     <tr>
     <td><c:out value="${student.id}"></c:out></td>
-    <td><c:out value="${student.email}"></c:out></td><td><c:out value="${student.idGroup}"></c:out></td>
+    <td><c:out value="${student.email}"></c:out></td>
+        <td><c:out value="${student.idGroup}"></c:out></td>
     <td><c:out value="${student.sex}"></c:out></td>
     <td><c:out value="${student.birthdate}"></c:out></td>
     <td><c:out value="${student.idGroup}"></c:out></td>

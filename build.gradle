@@ -17,4 +17,11 @@ dependencies {
         compile 'jstl:jstl:1.2'
         compile group: 'postgresql', name: 'postgresql', version: '9.0-801.jdbc4'
         compile group: 'javax.mail', name: 'mail', version: '1.4'
+
+        compile group: 'org.springframework', name: 'spring-context', version: '4.3.5.RELEASE'
+        compile group: 'org.springframework', name: 'spring-web', version: '4.3.5.RELEASE'
+
+    compile group: 'org.springframework.security', name: 'spring-security-web', version: '4.2.0.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-core', version: '4.2.0.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-config', version: '4.2.0.RELEASE'
 }
