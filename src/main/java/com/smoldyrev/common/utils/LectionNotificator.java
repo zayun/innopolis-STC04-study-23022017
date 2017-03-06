@@ -4,6 +4,7 @@ import com.smoldyrev.models.pojo.Lection;
 import com.smoldyrev.models.pojo.Student;
 import org.apache.log4j.Logger;
 import com.smoldyrev.services.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -12,11 +13,15 @@ import java.util.List;
  * Created by smoldyrev on 24.02.17.
  */
 public class LectionNotificator {
+
     private static Logger logger = Logger.getLogger(LectionNotificator.class);
 
-    public static void notifyByLection(Lection lection){
+    @Autowired
+    private StudentService studentService;
+
+    public void notifyByLection(Lection lection){
         List<Student> students =
-            StudentService.getStudentsByGroupId(lection.getGroupid());
+                studentService.getStudentsByGroupId(lection.getGroupid());
         logger.trace(students.size() + "founded");
         for (Student student:
              students) {

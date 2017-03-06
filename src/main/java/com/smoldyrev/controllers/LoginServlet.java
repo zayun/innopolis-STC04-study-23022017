@@ -5,6 +5,9 @@ import com.smoldyrev.models.pojo.User;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import com.smoldyrev.services.UserService;
 
@@ -24,6 +27,11 @@ public class LoginServlet extends HttpServlet {
     @Autowired(required = true)
     private UserService userService;
 
+    @RequestMapping(value="/students/login", method = RequestMethod.GET)
+    public String showMainDash(Model model) {
+
+        return "redirect:" + "/students/list";
+    }
 
     private static Logger logger = Logger.getLogger(LoginServlet.class);
     static {

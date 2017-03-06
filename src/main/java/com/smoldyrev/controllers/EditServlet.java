@@ -7,7 +7,9 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.smoldyrev.services.StudentService;
 import com.smoldyrev.services.UserService;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +25,13 @@ public class EditServlet extends HttpServlet {
     private static Logger logger = Logger.getLogger(RegistrationServlet.class);
 
     @Autowired
-    private UserService userService;
+    private StudentService studentService;
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this, config.getServletContext());
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,12 +40,9 @@ public class EditServlet extends HttpServlet {
 
         Student student = null;
 
-        try {
-            student = StudentDao.getStudentById(id);
-            logger.debug(student.getId());
-        } catch (UserDAOException e) {
-            e.printStackTrace();
-        }
+        student = studentService.getStudentById(id);
+        logger.debug(student.getId());
+
         req.setAttribute("id", student.getId());
         req.setAttribute("name", student.getName());
         req.setAttribute("birthdate", student.getBirthdate());
@@ -62,9 +67,9 @@ public class EditServlet extends HttpServlet {
         student.setIdGroup(Integer.parseInt(req.getParameter("group")));
         int count = 0;
         if (id == 0) {
-            count = StudentService.insertStudent(student);
+            count = studentService.insertStudent(student);
         } else {
-            count = StudentService.updateStudentOnId(student);
+            count = studentService.updateStudentOnId(student);
         }
         if (count != 0) {
             logger.trace("true");

@@ -2,8 +2,10 @@ package com.smoldyrev.controllers.listeners;
 
 import com.smoldyrev.common.utils.LectionNotificator;
 import com.smoldyrev.models.pojo.Lection;
+import com.smoldyrev.services.StudentService;
 import org.apache.log4j.Logger;
 import com.smoldyrev.services.LectionService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -16,6 +18,11 @@ import java.util.List;
 public class ApplicationLoadListener implements ServletContextListener {
 
     private static Logger logger = Logger.getLogger(ApplicationLoadListener.class);
+
+    @Autowired
+    private LectionNotificator lectionNotificator;
+    @Autowired
+    private LectionService lectionService;
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
@@ -45,12 +52,12 @@ public class ApplicationLoadListener implements ServletContextListener {
     }
 
     public void notifyByNearestLection() {
-        List<Lection> lections = LectionService.getNearedLection();
+        List<Lection> lections = lectionService.getNearedLection();
         if (lections.size() > 0) {
             logger.trace("lections founded");
             for (Lection lection :
                     lections) {
-                LectionNotificator.notifyByLection(lection);
+                lectionNotificator.notifyByLection(lection);
             }
         } else {
             logger.trace("neared lections not found");

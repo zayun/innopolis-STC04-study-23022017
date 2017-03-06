@@ -4,6 +4,7 @@ import com.smoldyrev.common.exceptions.UserDAOException;
 import com.smoldyrev.models.connector.AcademConnector;
 import com.smoldyrev.models.pojo.Student;
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.List;
 /**
  * Created by bot on 23.02.17.
  */
+@Service
 public class StudentDao {
 
     private static Logger logger = Logger.getLogger(StudentDao.class);
