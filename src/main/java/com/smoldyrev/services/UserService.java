@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
@@ -15,13 +16,13 @@ import java.util.Random;
  * Created by smoldyrev on 23.02.17.
  */
 
-@Service
-@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Service("userService")
+@Component
 public class UserService {
 
     private static Logger logger = Logger.getLogger(UserService.class);
 
-    private UserDAO userDAO;
+    private UserDAO userDAO = new UserDAO();
 
     private int anInt = 0;
 
@@ -36,12 +37,5 @@ public class UserService {
 
     public boolean registration(String login, String password, String email) throws UserDAOException {
         return UserDAO.registrationUser(login, password,email);
-    }
-
-    @Autowired
-    public void setUserDAO(UserDAO userDAO) {
-        logger.debug("setUserDAO-12123123");
-
-        this.userDAO = userDAO;
     }
 }

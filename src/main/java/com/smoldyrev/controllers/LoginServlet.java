@@ -27,12 +27,6 @@ public class LoginServlet extends HttpServlet {
     @Autowired(required = true)
     private UserService userService;
 
-    @RequestMapping(value="/students/login", method = RequestMethod.GET)
-    public String showMainDash(Model model) {
-
-        return "redirect:" + "/students/list";
-    }
-
     private static Logger logger = Logger.getLogger(LoginServlet.class);
     static {
         DOMConfigurator.configure("log4j.xml");

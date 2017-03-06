@@ -11,6 +11,8 @@
     <title>$Title$</title>
   </head>
   <body>
-  $END$
+  <a href="/students/registration">Registration</a>
+  <a href="/students/login">Login</a>
+
   </body>
 </html>

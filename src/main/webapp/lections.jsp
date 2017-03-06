@@ -33,7 +33,7 @@
         <td><c:out value="${lection.textLection}"></c:out></td>
         <td><c:out value="${lection.groupid}"></c:out></td>
 
-        <td><a href="/students/addlection?id=${lection.id}">edit</a>
+        <td><a href="/students/editlection?id=${lection.id}">edit</a>
             /
             <a href="/students/deletelection?id=${lection.id}">del</a></td>
     </tr>

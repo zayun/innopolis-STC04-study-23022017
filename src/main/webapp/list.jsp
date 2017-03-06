@@ -30,9 +30,9 @@
     <td><c:out value="${student.birthdate}"></c:out></td>
     <td><c:out value="${student.idGroup}"></c:out></td>
 
-        <td><a href="/students/edit?id=${student.id}">edit</a>
+        <td><a href="/students/editstudent?id=${student.id}">edit</a>
             /
-        <a href="/students/delete?id=${student.id}">del</a></td>
+        <a href="/students/deletestudent?id=${student.id}">del</a></td>
     </tr>
 
     <%--<c:out value="${userItem.name}"></c:out>--%>

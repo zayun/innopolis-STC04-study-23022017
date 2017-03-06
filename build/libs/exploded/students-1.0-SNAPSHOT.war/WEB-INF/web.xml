@@ -5,14 +5,14 @@
          version="3.1">
 
 
-    <welcome-file-list>
-        <welcome-file>/login.jsp</welcome-file>
-    </welcome-file-list>
+    <!--<welcome-file-list>-->
+        <!--<welcome-file>/students/login</welcome-file>-->
+    <!--</welcome-file-list>-->
     <!-- Add Support for Spring -->
     <!-- Создает Spring Container, доступный всем сервлетам и фильтрам -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/applicationContext.xml</param-value>
+        <param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
     </context-param>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

@@ -12,21 +12,21 @@
 </head>
 <body>
 
-<form action="/students/edit" method="post">
+<form action="/students/editstudent" method="post">
     <label for="id">id:</label>
-    <input type="text" name="id" id="id" value="${id}" placeholder="id">
+    <input type="text" name="id" id="id" value="${student.id}" placeholder="id">
 
     <label for="name">FIO:</label>
-    <input type="text" name="name" id="name" value="${name}" placeholder="FIO">
+    <input type="text" name="name" id="name" value="${student.name}" placeholder="FIO">
 
     <label for="birthdate">dd.mm.yyyy:</label>
-    <input type="date" name="birthdate" id="birthdate" value="${birthdate}" placeholder="Input">
+    <input type="date" name="birthdate" id="birthdate" value="${student.birthdate}" placeholder="Input">
 
     <label for="group">Group:</label>
-    <input type="text" name="group" id="group" value="${group}" placeholder="group">
+    <input type="text" name="group" id="group" value="${student.getIdGroup()}" placeholder="group">
 
     <label for="sex">Sex:</label>
-    <input type="text" name="sex" id="sex" value="${sex}" placeholder="sex">
+    <input type="text" name="sex" id="sex" value="${student.sex}" placeholder="sex">
 
     <input type="submit" value="ok" formmethod="post">
 </form>
