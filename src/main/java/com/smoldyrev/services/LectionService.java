@@ -11,7 +11,7 @@ import java.util.List;
  * Created by smoldyrev on 24.02.17.
  */
 @Service
-public class LectionService {
+public class LectionService implements ILectionService {
 
     public List<Lection> getAllLections(){
         return LectionDAO.getAllLections();

@@ -2,6 +2,7 @@ package com.smoldyrev.controllers;
 
 import com.smoldyrev.common.exceptions.UserDAOException;
 import com.smoldyrev.models.pojo.Student;
+import com.smoldyrev.services.IStudentService;
 import com.smoldyrev.services.StudentService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class EditStudentController {
     private static Logger logger = Logger.getLogger(EditStudentController.class);
 
     @Autowired
-    private StudentService studentService;
+    private IStudentService studentService;
 
     @RequestMapping(value = "/editstudent", method = RequestMethod.GET)
     public String showEditStudentPage(Model model,

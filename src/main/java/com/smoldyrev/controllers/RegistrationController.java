@@ -1,6 +1,7 @@
 package com.smoldyrev.controllers;
 
 import com.smoldyrev.common.exceptions.UserDAOException;
+import com.smoldyrev.services.IUserService;
 import com.smoldyrev.services.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class RegistrationController {
     private static Logger logger = Logger.getLogger(RegistrationController.class);
 
     @Autowired
-    private UserService userService;
+    private IUserService userService;
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String showRegistrationPage(Model model) {

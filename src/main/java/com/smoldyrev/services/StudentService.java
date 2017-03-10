@@ -13,7 +13,7 @@ import java.util.List;
  * Created by smoldyrev on 23.02.17.
  */
 @Service
-public class StudentService {
+public class StudentService implements IStudentService{
 
     private static Logger logger = Logger.getLogger(StudentService.class);
 

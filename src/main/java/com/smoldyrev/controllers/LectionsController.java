@@ -1,6 +1,7 @@
 package com.smoldyrev.controllers;
 
 import com.smoldyrev.models.pojo.Lection;
+import com.smoldyrev.services.ILectionService;
 import com.smoldyrev.services.LectionService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class LectionsController {
     private static Logger logger = Logger.getLogger(LectionsController.class);
 
     @Autowired
-    private LectionService lectionService;
+    private ILectionService lectionService;
 
     @RequestMapping(value = "/lections", method = RequestMethod.GET)
     public String showListPage(Model model) {

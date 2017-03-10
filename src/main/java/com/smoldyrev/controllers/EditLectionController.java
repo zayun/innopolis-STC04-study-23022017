@@ -2,6 +2,7 @@ package com.smoldyrev.controllers;
 
 import com.smoldyrev.models.pojo.Lection;
 import com.smoldyrev.models.pojo.Student;
+import com.smoldyrev.services.ILectionService;
 import com.smoldyrev.services.LectionService;
 import com.smoldyrev.services.StudentService;
 import org.apache.log4j.Logger;
@@ -24,7 +25,7 @@ public class EditLectionController {
     private static Logger logger = Logger.getLogger(EditLectionController.class);
 
     @Autowired
-    private LectionService lectionService;
+    private ILectionService lectionService;
 
     @RequestMapping(value = "/editlection", method = RequestMethod.GET)
     public String showEditLectionPage(Model model,

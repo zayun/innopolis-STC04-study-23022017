@@ -2,10 +2,12 @@ package com.smoldyrev.controllers;
 
 import com.smoldyrev.common.exceptions.UserDAOException;
 import com.smoldyrev.models.pojo.User;
+import com.smoldyrev.services.IUserService;
 import com.smoldyrev.services.UserService;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,11 +26,13 @@ public class LoginController {
     }
 
     @Autowired
-    private UserService userService;
+    private IUserService userService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String showLoginPage(Model model) {
+    public String showLoginPage(Model model,
+                                @RequestParam(name = "msg", required = false) String msg) {
 
+        model.addAttribute("msg", msg);
         return "login";
     }
 
