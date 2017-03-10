@@ -30,6 +30,6 @@ public class LectionsController {
 
         model.addAttribute("lections", lections);
 
-        return "lections";
+        return "rooms/lections";
     }
 }

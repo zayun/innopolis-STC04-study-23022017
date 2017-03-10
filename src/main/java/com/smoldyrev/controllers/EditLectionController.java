@@ -30,14 +30,14 @@ public class EditLectionController {
     public String showEditLectionPage(Model model,
                                       @RequestParam int id) {
         Lection lection = lectionService.getLectionOnId(id);
-        System.out.println(lection.getId() + "/////1231231321321321321321");
+
         model.addAttribute("lection", lection);
-        return "addlection";
+        return "rooms/addlection";
     }
 
     @RequestMapping(value = "/addlection", method = RequestMethod.GET)
     public String showAddStudentPage(Model model) {
-        return "addlection";
+        return "rooms/addlection";
     }
 
     @RequestMapping(value = "/deletelection", method = RequestMethod.GET)

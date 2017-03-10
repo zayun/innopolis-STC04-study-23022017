@@ -25,7 +25,7 @@ public class ListController {
     public String showListPage(Model model) {
         List<Student> studentsList = studentService.getAllStudents();
         model.addAttribute("studentList", studentsList);
-        return "list";
+        return "rooms/list";
     }
 
 }

@@ -30,7 +30,7 @@ public class EditStudentController {
         Student student = studentService.getStudentById(id);
         logger.debug(student.getId());
         model.addAttribute("student", student);
-        return "editStudent";
+        return "rooms/editStudent";
     }
 
     @RequestMapping(value = "/addstudent", method = RequestMethod.GET)
