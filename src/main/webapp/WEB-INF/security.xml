@@ -9,7 +9,7 @@
 	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
     <http>
-        <intercept-url pattern="/list*" access="hasRole('ROLE_USER') OR hasRole('ROLE_ANONYMOUS')"/>
+        <intercept-url pattern="/list*" access="hasRole('ROLE_USER') OR hasRole('ROLE_ANONYMOUS') OR hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/lections*" access="hasRole('ROLE_USER') OR hasRole('ROLE_ADMIN')"/>
         <form-login login-page="/login"
                     login-processing-url="/j_spring_security_check"
@@ -23,16 +23,31 @@
         <csrf disabled="true"/>
     </http>
 
-
-    <authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="admin" password="1" authorities="ROLE_ADMIN, ROLE_USER" />
-                <user name="user" password="1" authorities="ROLE_USER" />
-                <user name="test" password="test" disabled="true" authorities="ROLE_USER" />
-            </user-service>
-        </authentication-provider>
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider user-service-ref="userDAO" />
     </authentication-manager>
+
+
+    <!--<authentication-manager alias="authenticationManager">-->
+        <!--<authentication-provider>-->
+            <!--<jdbc-user-service data-source-ref="dataSource"-->
+
+                               <!--users-by-username-query="SELECT &quot;User&quot;.login, &quot;User&quot;.password, true FROM &quot;Main&quot;.&quot;User&quot;  WHERE login=?"-->
+
+                               <!--authorities-by-username-query="SELECT &quot;User&quot;.login, &quot;User&quot;.role FROM &quot;Main&quot;.&quot;User&quot; WHERE login=?;"-->
+
+            <!--/>-->
+        <!--</authentication-provider>-->
+    <!--</authentication-manager>-->
+    <!--<authentication-manager>-->
+        <!--<authentication-provider>-->
+            <!--<user-service>-->
+                <!--<user name="admin" password="1" authorities="ROLE_ADMIN, ROLE_USER" />-->
+                <!--<user name="user" password="1" authorities="ROLE_USER" />-->
+                <!--<user name="test" password="test" disabled="true" authorities="ROLE_USER" />-->
+            <!--</user-service>-->
+        <!--</authentication-provider>-->
+    <!--</authentication-manager>-->
 
 
 </beans:beans>

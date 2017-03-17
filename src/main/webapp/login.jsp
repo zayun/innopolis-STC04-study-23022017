@@ -18,14 +18,14 @@
     <%--</form>--%>
 <%--</div>--%>
 <%--<div>--%>
-<form action="/students/login" method="post">
-    <label for="login">Login:</label>
-    <input type="text" name="login" id="login" value="" placeholder="логин">
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password" value="" placeholder="пароль">
+<%--<form action="/students/login" method="post">--%>
+    <%--<label for="login">Login:</label>--%>
+    <%--<input type="text" name="login" id="login" value="" placeholder="логин">--%>
+    <%--<label for="password">Password:</label>--%>
+    <%--<input type="password" name="password" id="password" value="" placeholder="пароль">--%>
 
-    <input type="submit" value="Submit" formmethod="post">
-</form></div>
+    <%--<input type="submit" value="Submit" formmethod="post">--%>
+<%--</form></div>--%>
 
 <div>
     <c:url value="/j_spring_security_check" var="loginUrl"/>

@@ -28,5 +28,4 @@ public class ListController {
         model.addAttribute("studentList", studentsList);
         return "rooms/list";
     }
-
 }

@@ -6,6 +6,13 @@ import com.smoldyrev.models.pojo.Student;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +22,8 @@ import java.util.List;
  */
 @Service
 public class StudentDao {
+
+    private static final EntityManagerFactory FACTORY = Persistence.createEntityManagerFactory("STUDENTS");
 
     private static Logger logger = Logger.getLogger(StudentDao.class);
 
@@ -166,5 +175,33 @@ public class StudentDao {
             logger.error(e);
         }
         return studentsList;
+    }
+
+    public static List<Student> getAllStudentsHiber() {
+
+        EntityManager em = FACTORY.createEntityManager();
+
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+
+        CriteriaQuery<Student> cq = cb.createQuery(Student.class);
+        Root<Student> from = cq.from(Student.class);
+
+        cq.select(from);
+        TypedQuery<Student> q = em.createQuery(cq);
+        List<Student> students = q.getResultList();
+//
+//
+//
+//        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+//        CriteriaQuery<Student> criteriaQuery = criteriaBuilder.createQuery(Student.class);
+//        Root<Student> root = criteriaQuery.from(Student.class);
+//        criteriaQuery.select(root);
+//
+//        List<Student> students = em.createQuery(criteriaQuery).getResultList();
+        for (Student st:
+             students) {
+            System.out.println("///////"+st.getName());
+        }
+        return students;
     }
 }

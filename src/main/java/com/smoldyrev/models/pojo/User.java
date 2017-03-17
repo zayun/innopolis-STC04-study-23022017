@@ -1,14 +1,31 @@
 package com.smoldyrev.models.pojo;
 
+import com.smoldyrev.models.dao.GrantedAuthorityImpl;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+
 /**
  * Created by smoldyrev on 23.02.17.
  */
-public class User {
+@Entity
+@Table(name = "\"User\"", schema = "\"Main\"", catalog = "academ")
+public class User implements UserDetails{
 
+    @Id
+    @GeneratedValue
+    @Column
     private int id;
+    @Column
     private String login;
+    @Column
     private String password;
+    @Column
     private String role;
+    @Column
     private String email;
 
     public User(int id, String login, String password, String role, String email) {
@@ -38,8 +55,40 @@ public class User {
         this.login = login;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Collection<GrantedAuthorityImpl> gr = new ArrayList<>();
+        gr.add(new GrantedAuthorityImpl(role));
+        return gr;
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return login;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
     public void setPassword(String password) {

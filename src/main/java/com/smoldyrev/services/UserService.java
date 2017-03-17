@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ import java.util.Random;
  */
 
 @Service
+@Secured("ROLE_ADMIN")
 public class UserService implements IUserService{
 
     private static Logger logger = Logger.getLogger(UserService.class);

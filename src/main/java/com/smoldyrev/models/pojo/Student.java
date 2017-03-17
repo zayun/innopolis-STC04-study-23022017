@@ -1,18 +1,33 @@
 package com.smoldyrev.models.pojo;
 
+import javax.persistence.*;
 import java.sql.Date;
 
 /**
  * Created by bot on 23.02.17.
  */
+@Entity
+@Table(name = "\"Student\"", schema = "\"Main\"", catalog = "academ")
 public class Student {
 
-
+    @Id
+    @GeneratedValue
+    @Column
     private int id;
+
+    @Column
     private String name;
+
+    @Column
     private Date birthdate;
+
+    @Column
     private String sex;
+
+    @Column
     private int id_group;
+
+    @Column
     private String email;
 
     public Student(int id, String name, Date birthdate, String sex, int id_group,String email) {

@@ -4,6 +4,7 @@ import com.smoldyrev.common.exceptions.UserDAOException;
 import com.smoldyrev.models.dao.StudentDao;
 import com.smoldyrev.models.pojo.Student;
 import org.apache.log4j.Logger;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -13,12 +14,14 @@ import java.util.List;
  * Created by smoldyrev on 23.02.17.
  */
 @Service
+@Secured("ROLE_ADMIN")
 public class StudentService implements IStudentService{
 
     private static Logger logger = Logger.getLogger(StudentService.class);
 
     public List<Student> getAllStudents(){
-        return StudentDao.getAllStudents();
+//        return StudentDao.getAllStudents();
+        return StudentDao.getAllStudentsHiber();
     }
 
     public Student getStudentById(int id) {
