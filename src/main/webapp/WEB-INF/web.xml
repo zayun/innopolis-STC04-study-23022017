@@ -29,6 +29,7 @@
         <param-value>
             /WEB-INF/security.xml
             /WEB-INF/dispatcher-servlet.xml
+            /WEB-INF/spring-config.xml
         </param-value>
     </context-param>
 

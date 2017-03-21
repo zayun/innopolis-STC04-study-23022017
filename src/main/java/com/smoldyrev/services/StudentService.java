@@ -1,11 +1,10 @@
 package com.smoldyrev.services;
 
-import com.smoldyrev.common.exceptions.UserDAOException;
 import com.smoldyrev.models.dao.StudentDao;
 import com.smoldyrev.models.pojo.Student;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,39 +18,36 @@ public class StudentService implements IStudentService{
 
     private static Logger logger = Logger.getLogger(StudentService.class);
 
+    @Autowired
+    private StudentRepository studentRepository;
+
     public List<Student> getAllStudents(){
-//        return StudentDao.getAllStudents();
-        return StudentDao.getAllStudentsHiber();
+        System.out.println("////////"+78978979);
+        return studentRepository.findAll();
     }
 
     public Student getStudentById(int id) {
-        Student student = null;
-        try {
-            student = StudentDao.getStudentById(id);
-        } catch (UserDAOException e) {
-            logger.error(e);
-        }
-        return student;
+        return studentRepository.findOne(id);
     }
 
 
     public int deleteStudentOnId(int id){
-
-        return StudentDao.deleteStudent(id);
+        studentRepository.delete(id);
+        return 1;
     }
 
     public int updateStudentOnId(Student student){
-
-        return StudentDao.updateStudent(student);
+        return studentRepository.saveAndFlush(student).getId();
     }
 
     public int insertStudent(Student student){
 
-        return StudentDao.insertStudent(student);
+        return studentRepository.save(student).getId();
     }
 
     public List<Student> getStudentsByGroupId(int groupid){
-        return StudentDao.getStudentsByGroup(groupid);
+//        return StudentDao.getStudentsByGroup(groupid);
+        return studentRepository.findByGroup(groupid);
     }
 
 }
