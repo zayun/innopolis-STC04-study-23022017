@@ -29,13 +29,5 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Gradle: org.hibernate:hibernate-core:5.2.8.Final" level="project" />
-    <orderEntry type="library" name="Gradle: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final" level="project" />
-    <orderEntry type="library" name="Gradle: org.springframework:spring-core:4.3.5.RELEASE" level="project" />
-    <orderEntry type="library" name="Gradle: org.springframework:spring-core:4.3.5.RELEASE" level="project" />
-    <orderEntry type="library" name="Gradle: org.hibernate:hibernate-core:5.2.8.Final" level="project" />
-    <orderEntry type="library" name="Spring Web Services-2.0.2" level="project" />
-    <orderEntry type="library" name="Gradle: org.hibernate:hibernate-core:5.2.8.Final" level="project" />
-    <orderEntry type="library" name="Gradle: org.hibernate:hibernate-core:5.2.8.Final" level="project" />
   </component>
 </module>
